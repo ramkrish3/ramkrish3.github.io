@@ -1,0 +1,657 @@
+<title>Ramakrishnan M</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F1F2F7; --surface:#FFFFFF; --ink:#12142B; --muted:#565A78; --line:#D9DBE8;
+  --cobalt:#2F3DF5; --tang:#FF6B1A; --cobalt-soft:#E3E6FF; --tang-soft:#FFE8DA;
+  --grid:rgba(47,61,245,.07); --shadow:0 18px 50px -24px rgba(18,20,43,.35);
+  --display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;
+  --body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0B0D1E; --surface:#14172E; --ink:#ECEEFB; --muted:#A3A7C6; --line:#272B4A;
+    --cobalt:#7F8BFF; --tang:#FF8A45; --cobalt-soft:#1D2250; --tang-soft:#3A2214;
+    --grid:rgba(127,139,255,.08); --shadow:0 18px 50px -24px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0B0D1E; --surface:#14172E; --ink:#ECEEFB; --muted:#A3A7C6; --line:#272B4A;
+  --cobalt:#7F8BFF; --tang:#FF8A45; --cobalt-soft:#1D2250; --tang-soft:#3A2214;
+  --grid:rgba(127,139,255,.08); --shadow:0 18px 50px -24px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+:focus-visible{outline:2px solid var(--tang);outline-offset:3px;border-radius:4px}
+
+/* progress + nav */
+.progress{position:fixed;top:0;left:0;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--cobalt),var(--tang));z-index:60}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:800;font-size:18px;text-decoration:none}
+.logo i{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;background:var(--ink);color:var(--bg);font-style:normal;font-size:13px;letter-spacing:.02em}
+.navlinks{display:flex;gap:22px}
+.navlinks a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:500;position:relative}
+.navlinks a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:100%;background:var(--tang);transform:scaleX(0);transform-origin:right;transition:transform .35s ease}
+.navlinks a:hover{color:var(--ink)}
+.navlinks a:hover::after{transform:scaleX(1);transform-origin:left}
+@media (max-width:640px){.navlinks{display:none}}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;padding:7px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.dot{width:8px;height:8px;border-radius:50%;background:#1DB36B;box-shadow:0 0 0 0 rgba(29,179,107,.6);animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 8px rgba(29,179,107,0)}100%{box-shadow:0 0 0 0 rgba(29,179,107,0)}}
+
+/* hero */
+.hero{position:relative;padding-block:clamp(40px,7vw,90px) clamp(32px,5vw,60px);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:44px 44px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(24px,4vw,56px);align-items:center}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr}}
+.eyebrow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.chip{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-radius:6px;background:var(--cobalt-soft);color:var(--cobalt);font-weight:500}
+.chip.t{background:var(--tang-soft);color:var(--tang)}
+.name{font-size:clamp(46px,7.2vw,100px);line-height:.88;font-weight:800;font-variation-settings:"wdth" 78;letter-spacing:-.02em}
+.name .ln{display:block;overflow:hidden;padding-bottom:.06em;white-space:nowrap}
+.name .ch{display:inline-block;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.name .accent{color:var(--cobalt)}
+.name .accent .ch:last-child{color:var(--tang)}
+@keyframes rise{from{transform:translateY(105%) rotate(6deg)}to{transform:none}}
+.lede{font-size:clamp(18px,2vw,21px);max-width:34ch;margin:26px 0 0;color:var(--ink)}
+.lede em{font-style:normal;background:linear-gradient(transparent 62%,var(--tang-soft) 62%)}
+.sub{color:var(--muted);max-width:52ch;margin:14px 0 0}
+.ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 20px;border-radius:10px;font-weight:600;text-decoration:none;font-size:15px;border:1px solid var(--ink);transition:transform .25s ease,box-shadow .25s ease,background .25s}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:6px 6px 0 var(--tang)}
+.btn.ghost:hover{background:var(--surface);transform:translateY(-2px)}
+.btn svg{width:16px;height:16px}
+
+/* funnel console */
+.console{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;position:relative}
+.console-top{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line)}
+.console-top .lights{display:flex;gap:6px}
+.console-top .lights span{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.console-top .mono{color:var(--muted);font-size:11px}
+.live{display:inline-flex;align-items:center;gap:6px;color:var(--tang)}
+.live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--tang);animation:blink 1.2s steps(2) infinite}
+@keyframes blink{50%{opacity:.2}}
+.stage{position:relative;aspect-ratio:1/1.02;max-width:100%}
+#funnel{position:absolute;inset:0;width:100%;height:100%;display:block}
+.toasts{position:absolute;left:12px;right:12px;bottom:12px;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.toast{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;background:var(--bg);border:1px solid var(--line);font-size:13px;box-shadow:0 8px 24px -14px rgba(0,0,0,.4);animation:toastIn .5s cubic-bezier(.2,.8,.2,1) both}
+.toast b{font-weight:600}
+.toast .ico{width:24px;height:24px;border-radius:6px;display:grid;place-items:center;background:var(--tang-soft);color:var(--tang);flex:none}
+.toast .src{margin-left:auto;font-family:var(--mono);font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.toast.out{animation:toastOut .45s ease forwards}
+@keyframes toastIn{from{transform:translateY(14px) scale(.96);opacity:0}}
+@keyframes toastOut{to{transform:translateY(-8px);opacity:0}}
+.console-foot{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.console-foot div{padding:10px 14px;border-right:1px solid var(--line)}
+.console-foot div:last-child{border-right:0}
+.console-foot .mono{display:block;color:var(--muted);font-size:10.5px}
+.console-foot strong{font-family:var(--display);font-size:15px}
+.caption{font-size:12px;color:var(--muted);margin:10px 2px 0}
+
+/* ticker */
+.ticker{border-block:1px solid var(--line);background:var(--ink);color:var(--bg);overflow:hidden;padding-block:14px}
+.track{display:flex;gap:40px;width:max-content;animation:marq 38s linear infinite}
+.track span{font-family:var(--display);font-weight:700;font-size:clamp(20px,2.6vw,30px);font-variation-settings:"wdth" 85;white-space:nowrap;display:flex;align-items:center;gap:40px}
+.track span::after{content:"";width:10px;height:10px;border-radius:2px;background:var(--tang);transform:rotate(45deg)}
+.ticker:hover .track{animation-play-state:paused}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding-block:clamp(60px,9vw,110px)}
+.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:end;margin-bottom:44px}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr}}
+.sec-head .mono{color:var(--tang);display:block;margin-bottom:12px}
+.sec-head h2{font-size:clamp(34px,5vw,58px);line-height:1;font-weight:800;font-variation-settings:"wdth" 82;letter-spacing:-.015em}
+.sec-head p{color:var(--muted);margin:0;max-width:46ch;justify-self:end}
+@media (max-width:760px){.sec-head p{justify-self:start}}
+
+/* campaigns */
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;perspective:1200px}
+@media (max-width:980px){.cases{grid-template-columns:1fr}}
+.case{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:18px;transform-style:preserve-3d;transition:transform .2s ease-out,box-shadow .3s;will-change:transform}
+.case:hover{box-shadow:var(--shadow)}
+.case .glare{position:absolute;inset:0;border-radius:18px;pointer-events:none;background:radial-gradient(400px circle at var(--gx,50%) var(--gy,0%),color-mix(in srgb,var(--cobalt) 12%,transparent),transparent 45%);opacity:0;transition:opacity .3s}
+.case:hover .glare{opacity:1}
+.case-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.case .kind{color:var(--muted);font-size:11px}
+.case h3{font-size:28px;font-weight:800;line-height:1.05;font-variation-settings:"wdth" 85;margin-top:6px}
+.badge{flex:none;font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;padding:5px 9px;border-radius:999px;border:1px solid currentColor;white-space:nowrap}
+.badge.strong{color:#12925A}
+.badge.good{color:var(--cobalt)}
+.path{position:relative;height:72px;padding-bottom:12px;border-radius:12px;background:var(--bg);border:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);align-items:end;overflow:hidden}
+.path span{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);text-align:center;position:relative;z-index:1}
+.path span:last-child{color:var(--tang);font-weight:500}
+.path::before{content:"";position:absolute;left:12%;right:12%;top:30%;height:1px;background:repeating-linear-gradient(90deg,var(--line) 0 6px,transparent 6px 12px)}
+.path i{position:absolute;top:calc(30% - 5px);left:12%;width:10px;height:10px;border-radius:50%;background:var(--cobalt);box-shadow:0 0 0 4px var(--cobalt-soft);animation:travel 3.6s cubic-bezier(.6,0,.4,1) infinite}
+.case:nth-child(2) .path i{animation-delay:-1.2s}
+.case:nth-child(3) .path i{animation-delay:-2.4s}
+@keyframes travel{0%{left:12%;background:var(--cobalt)}45%{left:50%}80%,100%{left:calc(88% - 10px);background:var(--tang);box-shadow:0 0 0 6px var(--tang-soft)}}
+.case p{margin:0;color:var(--muted);font-size:15px}
+.case ul{list-style:none;padding:0;margin:0;display:grid;gap:8px;font-size:14.5px}
+.case li{display:grid;grid-template-columns:18px 1fr;gap:6px}
+.case li::before{content:"";width:8px;height:8px;margin-top:8px;border-radius:2px;background:var(--cobalt);transform:rotate(45deg)}
+.result{margin-top:auto;padding-top:16px;border-top:1px dashed var(--line)}
+.result .mono{color:var(--muted);font-size:10.5px}
+.result strong{display:block;font-family:var(--display);font-size:19px;line-height:1.2;margin-top:4px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:12px;padding:4px 9px;border-radius:6px;background:var(--bg);border:1px solid var(--line);color:var(--muted)}
+
+/* edge section */
+.edge{background:var(--ink);color:var(--bg);border-radius:24px;padding:clamp(28px,5vw,56px);display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(24px,4vw,56px);align-items:center;position:relative;overflow:hidden}
+@media (max-width:860px){.edge{grid-template-columns:1fr}}
+.edge h2{font-size:clamp(30px,4.2vw,50px);line-height:1.02;font-weight:800;font-variation-settings:"wdth" 82}
+.edge h2 span{color:var(--tang)}
+.edge .mono{color:var(--tang);display:block;margin-bottom:14px}
+.stack{display:grid;gap:12px}
+.layer{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;padding:16px 18px;border-radius:14px;border:1px solid color-mix(in srgb,var(--bg) 18%,transparent);background:color-mix(in srgb,var(--bg) 6%,transparent);transition:transform .3s ease,background .3s}
+.layer:hover{transform:translateX(8px);background:color-mix(in srgb,var(--bg) 11%,transparent)}
+.layer .n{font-family:var(--mono);font-size:11px;padding:4px 8px;border-radius:6px;background:var(--tang);color:#12142B;font-weight:500}
+.layer h3{font-size:19px;font-weight:700;font-family:var(--display)}
+.layer p{margin:2px 0 0;opacity:.72;font-size:14.5px}
+
+/* experience */
+.timeline{position:relative;display:grid;gap:18px;padding-left:34px}
+.timeline::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--tang),var(--cobalt) 60%,var(--line));transform-origin:top;animation:draw 1.6s .4s cubic-bezier(.3,.7,.2,1) both}
+@keyframes draw{from{transform:scaleY(0)}}
+.job{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 24px;display:grid;grid-template-columns:200px 1fr;gap:24px;transition:border-color .3s}
+.job:hover{border-color:var(--cobalt)}
+.job::before{content:"";position:absolute;left:-31px;top:26px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--cobalt)}
+.job.now::before{border-color:var(--tang);background:var(--tang);box-shadow:0 0 0 5px var(--tang-soft)}
+@media (max-width:720px){.job{grid-template-columns:1fr;gap:10px}}
+.job .when{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:.04em}
+.job .when b{display:block;color:var(--ink);font-weight:500;margin-top:4px;font-size:11px;text-transform:uppercase;letter-spacing:.08em}
+.job h3{font-size:22px;font-weight:700;font-variation-settings:"wdth" 90}
+.job .co{color:var(--cobalt);font-weight:600;font-size:15px}
+.job ul{margin:10px 0 0;padding-left:18px;color:var(--muted);font-size:15px;display:grid;gap:4px}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:900px){.skills{grid-template-columns:1fr}}
+.skillcol{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px}
+.skillcol h3{font-size:20px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.skillcol h3 i{width:10px;height:10px;border-radius:2px;transform:rotate(45deg);background:var(--cobalt)}
+.skillcol:nth-child(2) h3 i{background:var(--tang)}
+.skillcol:nth-child(3) h3 i{background:var(--ink)}
+.srow{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:15px}
+.srow:first-of-type{border-top:0}
+.lvl{font-family:var(--mono);font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;padding:4px 8px;border-radius:6px;background:var(--cobalt-soft);color:var(--cobalt);white-space:nowrap}
+.lvl.i{background:var(--tang-soft);color:var(--tang)}
+.lvl.w{background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+
+/* education */
+.edu{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media (max-width:760px){.edu{grid-template-columns:1fr}}
+.educ{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;display:flex;justify-content:space-between;gap:16px;align-items:flex-end}
+.educ h3{font-size:22px;font-weight:700;line-height:1.15}
+.educ .mono{color:var(--muted);display:block;margin-bottom:8px}
+.score{text-align:right;flex:none}
+.score strong{display:block;font-family:var(--display);font-size:clamp(40px,5vw,56px);font-weight:800;line-height:.9;color:var(--cobalt);font-variant-numeric:tabular-nums}
+.score span{font-family:var(--mono);font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+
+/* contact */
+.contact{text-align:left;display:grid;gap:30px}
+.big{font-size:clamp(40px,8vw,104px);line-height:.92;font-weight:800;font-variation-settings:"wdth" 76;letter-spacing:-.02em}
+.big span{color:var(--tang)}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media (max-width:860px){.cgrid{grid-template-columns:1fr}}
+.cbox{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.cbox .mono{color:var(--muted);font-size:10.5px;display:block}
+.cbox .val{font-weight:600;font-size:16px;word-break:break-word}
+.copy{flex:none;font:500 12px var(--mono);padding:7px 10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.copy:hover{border-color:var(--cobalt);color:var(--cobalt)}
+footer{border-top:1px solid var(--line);padding-block:26px;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+
+<div class="progress" id="progress"></div>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top"><i>RM</i>Ramakrishnan M</a>
+    <div class="navlinks">
+      <a href="#work">Campaigns</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <span class="status"><span class="dot"></span>Open to work</span>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">
+        <span class="chip">Digital Marketing Executive</span>
+        <span class="chip t">Performance Marketing</span>
+      </div>
+      <h1 class="name" aria-label="Ramakrishnan M">
+        <span class="ln" data-split>Rama</span>
+        <span class="ln accent" data-split>krishnan M.</span>
+      </h1>
+      <p class="lede">I run <em>Meta Ads and Google Ads</em> that turn people scrolling past into real enquiries.</p>
+      <p class="sub">I started as a PHP developer, then worked in QA testing, and now do performance marketing. So I can plan the campaign, build or fix the landing page, and test the funnel myself.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#work">See my campaigns
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/rama-krishnan-1212ramk" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="#contact">Contact me</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="console" aria-label="Animated illustration of an ad funnel turning reach into enquiries">
+        <div class="console-top">
+          <div class="lights"><span></span><span></span><span></span></div>
+          <span class="mono">Campaign · Lead generation</span>
+          <span class="mono live">Live</span>
+        </div>
+        <div class="stage">
+          <canvas id="funnel"></canvas>
+          <div class="toasts" id="toasts" aria-hidden="true"></div>
+        </div>
+        <div class="console-foot">
+          <div><span class="mono">Channel</span><strong>Meta + Google</strong></div>
+          <div><span class="mono">Objective</span><strong>Leads</strong></div>
+          <div><span class="mono">Optimise for</span><strong>Enquiries</strong></div>
+        </div>
+      </div>
+      <p class="caption">Illustration of how my campaigns work: reach, then clicks, then enquiries.</p>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="track" id="track">
+    <span>Meta Ads</span><span>Google Ads</span><span>Lead Generation</span><span>SEO</span><span>Google Analytics 4</span><span>Search Console</span><span>Retargeting</span><span>Landing Pages</span><span>A/B Testing</span><span>PHP</span>
+  </div>
+</div>
+
+<main>
+<section id="work">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="mono">Selected campaigns</span><h2>Brands I've brought leads to</h2></div>
+      <p>Three businesses I ran campaigns for, from a property rental platform to a gaming arena. Each one was built around one goal: getting people to enquire.</p>
+    </div>
+
+    <div class="cases">
+      <article class="case" data-tilt>
+        <div class="glare"></div>
+        <div class="case-top">
+          <div><span class="mono kind">Real estate · Rentals</span><h3>Renthub360</h3></div>
+          <span class="badge good">Leads flowing</span>
+        </div>
+        <div class="path"><i></i><span>Listing ad</span><span>Click</span><span>Enquiry</span></div>
+        <p>A rental listing and property management platform.</p>
+        <ul>
+          <li>Ran listing ads for rental properties</li>
+          <li>Ran lead ads for property management services</li>
+          <li>Targeted owners and tenants in the local area</li>
+        </ul>
+        <div class="tags"><span class="tag">Meta Ads</span><span class="tag">Google Ads</span><span class="tag">Lead forms</span></div>
+        <div class="result"><span class="mono">Outcome</span><strong>Steady enquiries for listings and property management</strong></div>
+      </article>
+
+      <article class="case" data-tilt>
+        <div class="glare"></div>
+        <div class="case-top">
+          <div><span class="mono kind">Gaming &amp; sports arena</span><h3>Culture Gaming Cafe</h3></div>
+          <span class="badge strong">Strong leads</span>
+        </div>
+        <div class="path"><i></i><span>Local ad</span><span>Click</span><span>Booking</span></div>
+        <p>A gaming and sports arena in Coimbatore.</p>
+        <ul>
+          <li>Ran local ads for gaming, sports and party bookings</li>
+          <li>Sent people to WhatsApp and call-to-book options</li>
+          <li>Promoted activities by audience and area</li>
+        </ul>
+        <div class="tags"><span class="tag">Meta Ads</span><span class="tag">Google Ads</span><span class="tag">Local SEO</span></div>
+        <div class="result"><span class="mono">Outcome</span><strong>Good flow of booking enquiries</strong></div>
+      </article>
+
+      <article class="case" data-tilt>
+        <div class="glare"></div>
+        <div class="case-top">
+          <div><span class="mono kind">Website launch</span><h3>Vpappearls</h3></div>
+          <span class="badge strong">Launched</span>
+        </div>
+        <div class="path"><i></i><span>Search / ad</span><span>Visit</span><span>Lead</span></div>
+        <p>A website launch followed by lead campaigns.</p>
+        <ul>
+          <li>Launched the website successfully</li>
+          <li>Set up on-page SEO for search visibility</li>
+          <li>Ran campaigns that sent traffic to the site</li>
+        </ul>
+        <div class="tags"><span class="tag">SEO</span><span class="tag">Google Ads</span><span class="tag">Meta Ads</span></div>
+        <div class="result"><span class="mono">Outcome</span><strong>Site went live and brought in good leads</strong></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="edge">
+      <div>
+        <span class="mono">Why hire me</span>
+        <h2>A marketer who can also <span>fix the landing page.</span></h2>
+      </div>
+      <div class="stack">
+        <div class="layer"><span class="n">Dev</span><div><h3>PHP developer background</h3><p>I can edit landing pages, forms and tracking code myself instead of waiting on a developer.</p></div></div>
+        <div class="layer"><span class="n">QA</span><div><h3>Testing experience</h3><p>I check every form, link and pixel before a campaign goes live, so no leads are lost.</p></div></div>
+        <div class="layer"><span class="n">Ads</span><div><h3>Performance marketing</h3><p>I run Meta and Google campaigns aimed at one number: real enquiries.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="mono">Experience</span><h2>Code to campaigns</h2></div>
+      <p>Most recent first.</p>
+    </div>
+    <div class="timeline">
+      <article class="job now">
+        <div class="when">Jul 2026 – Sep 2026<b>Digital Marketing</b></div>
+        <div>
+          <h3>Digital Marketing Executive</h3>
+          <div class="co">Hub 360</div>
+          <ul>
+            <li>Ran Meta Ads and Google Ads lead campaigns for client brands</li>
+            <li>Handled campaigns for Renthub360, Culture Gaming Cafe and Vpappearls</li>
+            <li>Worked on SEO and tracked leads from each campaign</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job">
+        <div class="when">Mar 2026 – Jul 2026<b>QA &amp; Proctoring</b></div>
+        <div>
+          <h3>Testing / Proctor</h3>
+          <div class="co">Talview</div>
+          <ul>
+            <li>Tested platform features and reported issues</li>
+            <li>Monitored online assessments as a proctor</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job">
+        <div class="when">Oct 2025 – Feb 2026<b>Development</b></div>
+        <div>
+          <h3>PHP Developer</h3>
+          <div class="co">Smart Global Solution</div>
+          <ul>
+            <li>Built and maintained features for PHP web applications</li>
+            <li>Fixed bugs and worked on website pages</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="skills" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="mono">Toolkit</span><h2>What I work with</h2></div>
+      <p>Platforms I use for performance marketing, SEO and tracking.</p>
+    </div>
+    <div class="skills">
+      <div class="skillcol">
+        <h3><i></i>Paid ads</h3>
+        <div class="srow">Meta Ads (Facebook &amp; Instagram)<span class="lvl">Hands-on</span></div>
+        <div class="srow">Google Ads (Search &amp; Display)<span class="lvl">Hands-on</span></div>
+        <div class="srow">Lead form campaigns<span class="lvl">Hands-on</span></div>
+        <div class="srow">Retargeting<span class="lvl w">Working</span></div>
+        <div class="srow">A/B testing ad creatives<span class="lvl w">Working</span></div>
+      </div>
+      <div class="skillcol">
+        <h3><i></i>SEO &amp; analytics</h3>
+        <div class="srow">SEO (on-page, keywords)<span class="lvl i">Intermediate</span></div>
+        <div class="srow">Google Analytics 4<span class="lvl w">Working</span></div>
+        <div class="srow">Google Search Console<span class="lvl w">Working</span></div>
+        <div class="srow">Meta Pixel &amp; conversion tracking<span class="lvl w">Working</span></div>
+        <div class="srow">Google Business Profile<span class="lvl w">Working</span></div>
+      </div>
+      <div class="skillcol">
+        <h3><i></i>Tech</h3>
+        <div class="srow">PHP<span class="lvl">Hands-on</span></div>
+        <div class="srow">HTML &amp; CSS<span class="lvl">Hands-on</span></div>
+        <div class="srow">Landing page edits<span class="lvl">Hands-on</span></div>
+        <div class="srow">Manual testing / QA<span class="lvl">Hands-on</span></div>
+        <div class="srow">Canva for ad creatives<span class="lvl w">Working</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><span class="mono">Education</span><h2>Studies</h2></div>
+    </div>
+    <div class="edu">
+      <div class="educ">
+        <div><span class="mono">2021 – 2025</span><h3>B.Tech, Information Technology</h3></div>
+        <div class="score"><strong>7.67</strong><span>CGPA</span></div>
+      </div>
+      <div class="educ">
+        <div><span class="mono">2020 – 2021</span><h3>Higher Secondary (12th)</h3></div>
+        <div class="score"><strong>86%</strong><span>Score</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="padding-top:0">
+  <div class="wrap contact">
+    <span class="mono" style="color:var(--tang)">Contact</span>
+    <h2 class="big">Let's get your<br>phone <span>ringing.</span></h2>
+    <div class="cgrid">
+      <div class="cbox"><div><span class="mono">Email</span><span class="val" id="c-email">ramakrishnan36367@gmail.com</span></div><button class="copy" id="copy-email" type="button" data-copy="c-email">Copy</button></div>
+      <div class="cbox"><div><span class="mono">Phone / WhatsApp</span><span class="val" id="c-phone">+91 93423 68966</span></div><button class="copy" id="copy-phone" type="button" data-copy="c-phone">Copy</button></div>
+      <div class="cbox"><div><span class="mono">LinkedIn</span><span class="val"><a href="https://www.linkedin.com/in/rama-krishnan-1212ramk" target="_blank" rel="noopener">rama-krishnan-1212ramk</a></span></div></div>
+    </div>
+    <div class="cgrid">
+      <div class="cbox"><div><span class="mono">GitHub</span><span class="val"><a href="https://github.com/ramkrish3" target="_blank" rel="noopener">github.com/ramkrish3</a></span></div></div>
+      <div class="cbox"><div><span class="mono">Looking for</span><span class="val">Digital marketing roles, Bengaluru</span></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Ramakrishnan M</span><span>Digital Marketing Executive · Meta Ads · Google Ads · SEO</span></div></footer>
+
+<script>
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // split hero name into letters
+  document.querySelectorAll('[data-split]').forEach((el, li) => {
+    const t = el.textContent; el.textContent = '';
+    [...t].forEach((c, i) => {
+      const s = document.createElement('span');
+      s.className = 'ch'; s.textContent = c === ' ' ? ' ' : c;
+      s.style.animationDelay = (li * 0.18 + i * 0.035) + 's';
+      el.appendChild(s);
+    });
+  });
+
+  // duplicate ticker for seamless loop
+  const tr = document.getElementById('track'); tr.innerHTML += tr.innerHTML;
+
+  // scroll progress
+  const bar = document.getElementById('progress');
+  const onScroll = () => {
+    const h = document.documentElement.scrollHeight - innerHeight;
+    bar.style.transform = 'scaleX(' + (h > 0 ? scrollY / h : 0) + ')';
+  };
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // card tilt + glare
+  if (!reduce && matchMedia('(hover:hover)').matches) {
+    document.querySelectorAll('[data-tilt]').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+        card.style.transform = `rotateY(${(x - .5) * 8}deg) rotateX(${(.5 - y) * 8}deg) translateY(-4px)`;
+        card.style.setProperty('--gx', x * 100 + '%'); card.style.setProperty('--gy', y * 100 + '%');
+      });
+      card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+    });
+  }
+
+  // copy buttons
+  document.querySelectorAll('.copy').forEach(b => b.addEventListener('click', () => {
+    const el = document.getElementById(b.dataset.copy); const txt = el.textContent.trim();
+    const done = () => { b.textContent = 'Copied'; setTimeout(() => b.textContent = 'Copy', 1400); };
+    const sel = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Selected'; setTimeout(() => b.textContent = 'Copy', 1400); };
+    try { navigator.clipboard.writeText(txt).then(done, sel); } catch (e) { sel(); }
+  }));
+
+  // funnel canvas
+  const cv = document.getElementById('funnel'), ctx = cv.getContext('2d');
+  let W = 0, H = 0, dpr = 1;
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  let C = {};
+  const readColors = () => { C = {cobalt:css('--cobalt'), tang:css('--tang'), line:css('--line'), muted:css('--muted'), ink:css('--ink'), soft:css('--cobalt-soft')}; };
+  const size = () => {
+    const r = cv.getBoundingClientRect(); dpr = Math.min(devicePixelRatio || 1, 2);
+    W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+  };
+  // funnel geometry (fractions of W/H)
+  const G = () => ({
+    top: H * .10, g1: H * .36, g2: H * .58, bot: H * .70,
+    wTop: W * .80, w1: W * .52, w2: W * .26, wBot: W * .12, cx: W * .47
+  });
+  const halfAt = (y, g) => {
+    const pts = [[g.top, g.wTop], [g.g1, g.w1], [g.g2, g.w2], [g.bot, g.wBot]];
+    if (y <= g.top) return g.wTop / 2;
+    for (let i = 0; i < 3; i++) {
+      const [y0, w0] = pts[i], [y1, w1] = pts[i + 1];
+      if (y <= y1) return (w0 + (w1 - w0) * (y - y0) / (y1 - y0)) / 2;
+    }
+    return g.wBot / 2;
+  };
+  const P = [];
+  const spawn = g => P.push({
+    x: g.cx + (Math.random() - .5) * g.wTop * .9, y: g.top - 10 - Math.random() * 30,
+    vx: 0, vy: .6 + Math.random() * .6, stage: 0, alive: true, a: 1, r: 2.2,
+    fate: Math.random() // < .30 becomes click; < .12 becomes lead
+  });
+  let t = 0, leadCount = 0, warm = true;
+  const msgs = [
+    ['Rental enquiry', 'Meta'], ['Arena booking', 'Google'], ['Property management', 'Meta'],
+    ['Party hall enquiry', 'Meta'], ['Website lead', 'Google'], ['Turf booking', 'Google']
+  ];
+  const toasts = document.getElementById('toasts');
+  const toast = () => {
+    const [m, s] = msgs[leadCount++ % msgs.length];
+    const d = document.createElement('div'); d.className = 'toast';
+    d.innerHTML = '<span class="ico"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 6.5l2.5 2.5L10 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span><b>New lead</b> · ' + m + '</span><span class="src">' + s + '</span>';
+    toasts.appendChild(d);
+    const live = [...toasts.children].filter(x => !x.classList.contains('out'));
+    if (live.length > 2) { const f = live[0]; f.classList.add('out'); setTimeout(() => f.remove(), 450); }
+  };
+  const drawFunnel = g => {
+    ctx.save();
+    // body
+    ctx.beginPath();
+    ctx.moveTo(g.cx - g.wTop/2, g.top); ctx.lineTo(g.cx - g.w1/2, g.g1); ctx.lineTo(g.cx - g.w2/2, g.g2); ctx.lineTo(g.cx - g.wBot/2, g.bot);
+    ctx.lineTo(g.cx + g.wBot/2, g.bot); ctx.lineTo(g.cx + g.w2/2, g.g2); ctx.lineTo(g.cx + g.w1/2, g.g1); ctx.lineTo(g.cx + g.wTop/2, g.top); ctx.closePath();
+    ctx.fillStyle = C.soft; ctx.globalAlpha = .55; ctx.fill(); ctx.globalAlpha = 1;
+    ctx.strokeStyle = C.line; ctx.lineWidth = 1.5; ctx.stroke();
+    // gates
+    ctx.setLineDash([4, 5]); ctx.strokeStyle = C.muted; ctx.globalAlpha = .5;
+    [[g.g1, g.w1], [g.g2, g.w2]].forEach(([y, w]) => { ctx.beginPath(); ctx.moveTo(g.cx - w/2, y); ctx.lineTo(g.cx + w/2, y); ctx.stroke(); });
+    ctx.setLineDash([]); ctx.globalAlpha = 1;
+    // labels
+    ctx.font = '500 10.5px "JetBrains Mono", monospace'; ctx.textBaseline = 'middle';
+    const lx = g.cx + g.wTop/2 + 8 > W - 60 ? W - 62 : g.cx + g.wTop/2 + 8;
+    const lab = (txt, y, col) => { ctx.fillStyle = col; ctx.fillText(txt, Math.min(W - 64, lx), y); };
+    lab('REACH', g.top + 10, C.muted);
+    lab('CLICKS', (g.g1 + g.g2) / 2, C.cobalt);
+    lab('LEADS', (g.g2 + g.bot) / 2 + 4, C.tang);
+    ctx.restore();
+  };
+  const step = () => {
+    const g = G();
+    ctx.clearRect(0, 0, W, H);
+    drawFunnel(g);
+    if (!reduce && t % 2 === 0) spawn(g);
+    for (const p of P) {
+      if (!p.alive) continue;
+      p.vy += 0.018; p.y += p.vy; p.x += p.vx;
+      const half = halfAt(p.y, g);
+      // pull inward to stay in funnel
+      if (p.stage < 3) {
+        const dx = p.x - g.cx;
+        if (Math.abs(dx) > half - 3) p.vx -= Math.sign(dx) * .22; else p.vx *= .96;
+      }
+      // gates
+      if (p.stage === 0 && p.y >= g.g1) {
+        if (p.fate < .30) { p.stage = 1; p.r = 2.8; } else { p.stage = 9; p.vx = Math.sign(p.x - g.cx || 1) * (1.2 + Math.random()); p.vy = -.4; }
+      }
+      if (p.stage === 1 && p.y >= g.g2) {
+        if (p.fate < .12) { p.stage = 2; p.r = 3.6; } else { p.stage = 9; p.vx = Math.sign(p.x - g.cx || 1) * (1 + Math.random()); p.vy = -.3; }
+      }
+      if (p.stage === 2 && p.y >= g.bot) { p.stage = 3; p.vx = 0; p.vy = 1.4; if (!reduce && !warm) toast(); }
+      if (p.stage === 9) { p.a -= .03; }
+      if (p.stage === 3) { p.a -= .035; }
+      if (p.a <= 0 || p.y > H) { p.alive = false; continue; }
+      ctx.globalAlpha = Math.max(0, p.a);
+      ctx.fillStyle = p.stage === 0 || p.stage === 9 ? C.muted : p.stage === 1 ? C.cobalt : C.tang;
+      if (p.stage === 2 || p.stage === 3) { ctx.shadowColor = C.tang; ctx.shadowBlur = 12; } else ctx.shadowBlur = 0;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.283); ctx.fill();
+    }
+    ctx.globalAlpha = 1; ctx.shadowBlur = 0;
+    for (let i = P.length - 1; i >= 0; i--) if (!P[i].alive) P.splice(i, 1);
+    t++;
+  };
+  const staticFrame = () => {
+    const g = G();
+    // seed a still snapshot of particles across stages
+    for (let i = 0; i < 90; i++) {
+      const y = g.top + Math.random() * (g.bot - g.top); const half = halfAt(y, g);
+      const st = y < g.g1 ? 0 : y < g.g2 ? 1 : 2;
+      if (st === 1 && Math.random() > .5) continue; if (st === 2 && Math.random() > .3) continue;
+      P.push({x: g.cx + (Math.random() - .5) * 2 * (half - 6), y, vx: 0, vy: 0, stage: st, alive: true, a: 1, r: [2.2, 2.8, 3.6][st], fate: 0});
+    }
+    ctx.clearRect(0,0,W,H); drawFunnel(g);
+    for (const p of P) { ctx.fillStyle = [C.muted, C.cobalt, C.tang][p.stage]; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.283); ctx.fill(); }
+    P.length = 0;
+  };
+  let running = true, raf = 0;
+  const loop = () => { if (running) step(); raf = requestAnimationFrame(loop); };
+  const init = () => { size(); readColors(); };
+  init();
+  if (reduce) { staticFrame(); msgs.slice(0,2).forEach(() => toast()); }
+  else {
+    // warm-up so the first frame already shows a full funnel
+    for (let i = 0; i < 260; i++) step();
+    warm = false; toast();
+    loop();
+    new IntersectionObserver(es => es.forEach(e => running = e.isIntersecting)).observe(cv);
+  }
+  addEventListener('resize', () => { size(); if (reduce) staticFrame(); });
+  const mo = new MutationObserver(readColors); mo.observe(document.documentElement, {attributes:true, attributeFilter:['data-theme']});
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', readColors);
+})();
+</script>
